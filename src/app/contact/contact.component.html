@@ -1,10 +1,12 @@
-<form>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
   <h1 class="header">Get in contact with us!</h1>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input
       type="email"
       class="form-control"
+      name="email"
+      ngModel
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
       placeholder="Enter email"
@@ -17,6 +19,8 @@
     <label>Subject</label>
     <input
       class="form-control"
+      name="subject"
+      ngModel
       id="exampleInputPassword1"
       placeholder="Subject"
     />
@@ -25,6 +29,8 @@
     <label for="exampleFormControlTextarea1">Message</label>
     <textarea
       class="form-control"
+      name="body"
+      ngModel
       id="exampleFormControlTextarea1"
       rows="3"
     ></textarea>
