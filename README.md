@@ -9,3 +9,5 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Running unit tests
 
 Run `ng test` to execute the unit tests. There are basic unit tests to confirm that each component is created, and a test for the PostMessageService to ensure that requests are being sent and with the right body.
+
+![](contact-us.gif)
