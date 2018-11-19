@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { PostMessageService } from "./post-message.service";
 
 @Component({
   selector: "app-contact",
@@ -8,7 +9,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./contact.component.css"]
 })
 export class ContactComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private postMessageService: PostMessageService
+  ) {}
 
   onSubmit(form: HTMLFormElement) {
     var body = {
@@ -17,26 +22,7 @@ export class ContactComponent implements OnInit {
       body: form.value.body
     };
 
-    console.log(body);
-
-    this.http
-      .post(
-        "http://interview-contact-submit-api-lb-1009699934.us-east-1.elb.amazonaws.com/contact-us/send",
-        body
-      )
-      .subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(["/success"]);
-        },
-        err => {
-          console.log("Error occured");
-
-          window.alert(
-            "There was an issue with your request, please try submitting again"
-          );
-        }
-      );
+    this.postMessageService.postMessage(body);
   }
 
   ngOnInit() {}
