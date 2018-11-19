@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpRequest } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
@@ -15,18 +15,10 @@ export class PostMessageService {
   }
 
   postMessage(body: object) {
-    this.http.post(this._Url, body).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(["/success"]);
-      },
-      err => {
-        console.log("Error occured");
+    const req = new HttpRequest("POST", this._Url, body, {
+      reportProgress: true
+    });
 
-        window.alert(
-          "There was an issue with your request, please try submitting again"
-        );
-      }
-    );
+    return this.http.request(req);
   }
 }
