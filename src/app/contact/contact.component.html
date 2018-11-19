@@ -6,6 +6,7 @@
       type="email"
       class="form-control"
       name="email"
+      required email
       ngModel
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
@@ -21,6 +22,7 @@
       class="form-control"
       name="subject"
       ngModel
+      required true
       id="exampleInputPassword1"
       placeholder="Subject"
     />
@@ -32,9 +34,16 @@
       name="body"
       ngModel
       id="exampleFormControlTextarea1"
+      required true
       rows="3"
     ></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button
+    type="submit button"
+    class="btn btn-primary"
+    [disabled]="!f.valid"
+  >
+    Submit
+  </button>
 </form>

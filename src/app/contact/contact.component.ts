@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-contact",
@@ -7,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./contact.component.css"]
 })
 export class ContactComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit(form: HTMLFormElement) {
     var body = {
@@ -15,6 +16,7 @@ export class ContactComponent implements OnInit {
       subject: form.value.subject,
       body: form.value.body
     };
+
     console.log(body);
 
     this.http
@@ -25,9 +27,14 @@ export class ContactComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.router.navigate(["/success"]);
         },
         err => {
           console.log("Error occured");
+
+          window.alert(
+            "There was an issue with your request, please try submitting again"
+          );
         }
       );
   }

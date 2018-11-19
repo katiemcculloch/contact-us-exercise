@@ -5,14 +5,17 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { ContactComponent } from "./contact/contact.component";
+import { SuccessComponent } from "./contact/success/success.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { Routes, RouterModule } from "@angular/router";
 
+
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "contact", component: ContactComponent }
+  { path: "contact", component: ContactComponent },
+  { path: "success", component: SuccessComponent }
 ];
 
 @NgModule({
@@ -20,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
